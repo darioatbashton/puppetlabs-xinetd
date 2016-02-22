@@ -11,79 +11,41 @@ defaults
 {
 # The next two items are intended to be a quick access place to
 # temporarily enable or disable services.
-<% if @enabled -%>
-        enabled         = <%= @enabled -%>
-<% end %>
-<% if @disabled -%>
-        disabled        = <%= @disabled -%>
-<% end %>
+#
+#       enabled         =
+#       disabled        =
 
 # Define general logging characteristics.
-<% if @log_type -%>
-        log_type        = <%= @log_type -%>
-<% end %>
-<% if @log_on_failure -%>
-        log_on_failure  = <%= @log_on_failure -%>
-<% end %>
-<% if @log_on_success -%>
-        log_on_success  = <%= @log_on_success -%>
-<% end %>
+        log_type        = SYSLOG daemon info
+        log_on_failure  = HOST
+        log_on_success  = PID HOST DURATION EXIT
 
 # Define access restriction defaults
-<% if @no_access -%>
-        no_access       = <%= @no_access -%>
-<% end %>
-<% if @only_from -%>
-        only_from       = <%= @only_from -%>
-<% end %>
-<% if @max_load -%>
-        max_load        = <%= @max_load -%>
-<% end %>
-<% if @cps -%>
-        cps             = <%= @cps -%>
-<% end %>
-<% if @instances -%>
-        instances       = <%= @instances -%>
-<% end %>
-<% if @per_source -%>
-        per_source      = <%= @per_source -%>
-<% end %>
+#
+#       no_access       =
+#       only_from       =
+#       max_load        = 0
+        cps             = 50 10
+        instances       = 50
+        per_source      = 10
 
 # Address and networking defaults
-<% if @bind -%>
-        bind            = <%= @bind -%>
-<% end %>
-<% if @mdns -%>
-        mdns            = <%= @mdns -%>
-<% end %>
-<% if @v6only -%>
-        v6only          = <%= @v6only -%>
-<% end %>
+#
+#       bind            =
+#       mdns            = yes
+        v6only          = no
 
 # setup environmental attributes
-<% if @env -%>
-        env             = <%= @env -%>
-<% end %>
-<% if @passenv -%>
-        passenv         = <%= @passenv -%>
-<% end %>
-<% if @groups -%>
-        groups          = <%= @groups -%>
-<% end %>
-<% if @umask -%>
-        umask           = <%= @umask -%>
-<% end %>
+#
+#       passenv         =
+        groups          = yes
+        umask           = 002
 
 # Generally, banners are not used. This sets up their global defaults
-<% if @banner -%>
-        banner          = <%= @banner -%>
-<% end %>
-<% if @banner_fail -%>
-        banner_fail     = <%= @banner_fail -%>
-<% end %>
-<% if @banner_success -%>
-        banner_success  = <%= @banner_success -%>
-<% end %>
+#
+#       banner          =
+#       banner_fail     =
+#       banner_success  =
 }
 
 includedir <%= @confdir %>
